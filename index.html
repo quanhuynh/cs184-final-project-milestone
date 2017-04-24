@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<style>
+	body {
+		padding: 100px;
+		width: 1000px;
+		margin: auto;
+		text-align: left;
+		font-weight: 300;
+		font-family: 'Open Sans', sans-serif;
+		color: #121212;
+	}
+	h1, h2, h3, h4 {
+		font-family: 'Source Sans Pro', sans-serif;
+	}
+	</style>
+	<title>CS 184 Final Project Milestone</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro" rel="stylesheet">
+</head>
+
+
+<body>
+
+	<h1 align="middle">CS 184: Computer Graphics and Imaging, Spring 2017</h1>
+	<h1 align="middle">Final Project Milestone</h1>
+	<h2 align="middle">Quan Huynh CS184-adn, Michael Wan CS184-acm</h2>
+
+	<br><br>
+
+	<div>
+
+		<h2 align="middle"> Scattering Model</h2>
+		<p> Marschner's scattering model consists of three scattering modes: </p>
+		<p><strong>Primary highlight:</strong> The main white highlight you see in hair, characterized by a shift towards the root because of the uneven surface of the hair's scales.</p>
+		<p><strong>Secondary highlight:</strong> The colored highlights you see on top of the primary highlights. This varies as a function of the azimuths.</p>
+		<p><strong>Transmitted component:</strong> Forward scattering component, causes hair to be very bright when lit from behind. </p>
+
+		<h2 align="middle"> Code </h2>
+		<p> Since we are using Mitsuba as our renderer, we only need to implement the hair bsdf. In terms of code, we have 6 functions we would need to write for the Hair bsdf. The skeleton for the Hair bsdf is provided below.</p>
+
+		<img src="code.png"/>
+
+		<p><strong>Constructor:</strong> takes in a Properties object and populates instance variables and sets up the configuration of the Hair bsdf.</p>
+		<p><strong>configure(): </strong> validates the reflectance value(s) and check that they are not more than 1. If they are scale them down.</p>
+		<p><strong>eval(): </strong> Evaluate f(x, wi, wo), where x is a sample shading point, wi and wo are incident and outgoing rays.</p>
+		<p><strong>sample(): </strong> Returns the value f(x, wi, wo)/pdf</p>
+		<p><strong>sample(): </strong> Returns the value f(x, wi, wo) and sets the pdf value into the given pdf pointer</p>
+		<p><strong>pdf(): </strong> Calculates the pdf of sampling an incident direction wi given a sample shading point and an outgoing direction wo.</p>
+
+		<h2 align="middle"> Expectations </h2>
+		<h3> Sample Rendering </h4>
+		<p> This is a sample rendering from Benedikt Bitterli (https://benedikt-bitterli.me/resources/). It shows hair rendered with the roughplastic bsdf, a plugin built into Mitsuba. This is the model of hair that we will be using for our project. We will change the bsdf to our custom hair bsdf. </p>
+		<img src="bitterli-model.png" height="500px" />
+
+		<h3> Modified Schedule </h4>
+		<p><strong> Week 3</strong>: We will continue writing the code. At this point we should be comfortable with writing the code and being used to the development process for Mitsuba.</p>
+		<p><strong> Week 4 </strong>: We should be finishing up code this week. We should also spend this week debugging and adding finishing touches to the model. If we finish early, we will be looking to implement d'Eon's model as well.</p>
+
+		<h2> Video and Slides </h2>
+		<p><a href="video-model.mp4"> Video explaining model </a></p>
+		<p><a href="video-code.mp4">Video explaining code</a></p>
+		<p><a href="progress.pptx">Slides</a></p>
+
+		<h2> Resources </h2>
+		<p>Light Scattering from Human Hair Fibers: http://graphics.stanford.edu/papers/hair/hair-sg03final.pdf</p>
+		<p>An Energy Conserving Hair Reflectance Model: http://www.eugenedeon.com/wp-content/uploads/2014/04/egsrhair.pdf</p>
+		<p>Wetting Effects in Hair Simulation: http://nishitalab.org/user/witawat/resources/papers/wetHair_pg2012.pdf</p>
+		<p>Mitsuba Rendrer: http://mitsuba-renderer.org/</p>
+		<p>Benedikt Bitterli hair model: https://benedikt-bitterli.me/resources/ </p>
+
+
+
+	</body>
+	</html>
